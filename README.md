@@ -112,6 +112,15 @@
 
 ## CHANGELOG:
 
+### [1.62.0]
+
+    Release Date : 2020-11-03
+
+- [Feature] 更新了企业订餐商户服务
+- [Feature] 更新了金融服务
+- [Feature] 更新了订单服务
+
+
 ### [1.61.0]
 
     Release Date : 2020-04-24

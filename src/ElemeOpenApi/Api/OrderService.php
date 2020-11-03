@@ -347,6 +347,17 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.applyRefund", array("orderId" => $order_id, "type" => $type, "remark" => $remark));
     }
 
+    /** 商家主动发起退单（企业到店买单订单）
+     * @param $order_id 订单Id
+     * @param $type 取消原因
+     * @param $remark 备注说明
+     * @return mixed
+     */
+    public function shop_pay_apply_refund($order_id, $type, $remark)
+    {
+        return $this->client->call("eleme.order.shopPayApplyRefund", array("orderId" => $order_id, "type" => $type, "remark" => $remark));
+    }
+
     /** 非自配送餐厅标记已出餐
      * @param $order_id 订单Id
      * @return mixed

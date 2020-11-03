@@ -126,4 +126,24 @@ class FinanceService extends RpcService
         return $this->client->call("eleme.finance.getOrderNew", array("shopId" => $shop_id, "orderId" => $order_id));
     }
 
+    /** 查询返现汇总信息账单
+     * @param $shop_id 饿了么分店、单店、总店店铺id
+     * @param $query 查询条件
+     * @return mixed
+     */
+    public function query_allowance_bills($shop_id, $query)
+    {
+        return $this->client->call("eleme.finance.queryAllowanceBills", array("shopId" => $shop_id, "query" => $query));
+    }
+
+    /** 查询返现每日详单
+     * @param $shop_id 饿了么分店、单店、总店店铺id
+     * @param $query 查询条件
+     * @return mixed
+     */
+    public function query_allowance_bill_detail($shop_id, $query)
+    {
+        return $this->client->call("eleme.finance.queryAllowanceBillDetail", array("shopId" => $shop_id, "query" => $query));
+    }
+
 }
