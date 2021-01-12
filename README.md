@@ -112,6 +112,18 @@
 
 ## CHANGELOG:
 
+### [1.63.0]
+
+    Release Date : 2021-01-12
+
+- [Feature] 更新了活动服务
+- [Feature] 更新了视频服务
+- [Feature] 更新了服务市场服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了订单服务
+- [Feature] 更新了商品服务
+
+
 ### [1.62.0]
 
     Release Date : 2020-11-03

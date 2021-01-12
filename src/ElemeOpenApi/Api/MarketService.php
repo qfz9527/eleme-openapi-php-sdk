@@ -47,4 +47,14 @@ class MarketService extends RpcService
         return $this->client->call("eleme.market.confirmOrder", array("orderNo" => $order_no));
     }
 
+    /** 物联网设备确认出餐
+     * @param $device_info 设备信息
+     * @param $order_id 订单id
+     * @return mixed
+     */
+    public function mark_finish_cooking_time($device_info, $order_id)
+    {
+        return $this->client->call("eleme.market.markFinishCookingTime", array("deviceInfo" => $device_info, "orderId" => $order_id));
+    }
+
 }

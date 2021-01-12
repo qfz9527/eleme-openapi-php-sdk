@@ -830,6 +830,25 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.updateItemGroup", array("shopId" => $shop_id, "itemId" => $item_id, "categoryId" => $category_id));
     }
 
+    /** 绑定商品视频
+     * @param $item_id 商品id
+     * @param $content_id 内容id
+     * @return mixed
+     */
+    public function bind_video($item_id, $content_id)
+    {
+        return $this->client->call("eleme.product.item.bindVideo", array("itemId" => $item_id, "contentId" => $content_id));
+    }
+
+    /** 解绑商品视频
+     * @param $item_id 商品id
+     * @return mixed
+     */
+    public function unbind_video($item_id)
+    {
+        return $this->client->call("eleme.product.item.unbindVideo", array("itemId" => $item_id));
+    }
+
     /** 查询连锁总店商品信息
      * @param $iid 连锁总店商品Id
      * @return mixed

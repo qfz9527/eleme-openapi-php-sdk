@@ -465,4 +465,13 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.queryCallAvailable", array("orderId" => $order_id));
     }
 
+    /** 批量获取订单退款信息_v2
+     * @param $order_ids 订单Id列表
+     * @return mixed
+     */
+    public function batch_get_refund_orders($order_ids)
+    {
+        return $this->client->call("eleme.order.batchGetRefundOrders", array("orderIds" => $order_ids));
+    }
+
 }

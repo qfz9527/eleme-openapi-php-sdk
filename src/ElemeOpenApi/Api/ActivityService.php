@@ -224,6 +224,51 @@ class ActivityService extends RpcService
         return $this->client->call("eleme.activity.coupon.updateCouponStatus", array("criteria" => $criteria, "type" => $type));
     }
 
+    /** 创建券模板
+     * @param $activity_template 创建券模板对象
+     * @return mixed
+     */
+    public function create_activity_template_v2($activity_template)
+    {
+        return $this->client->call("eleme.activity.coupon.createActivityTemplateV2", array("activityTemplate" => $activity_template));
+    }
+
+    /** 修改券模板
+     * @param $update_model 修改券模板对象
+     * @return mixed
+     */
+    public function modify_activity_template_v2($update_model)
+    {
+        return $this->client->call("eleme.activity.coupon.modifyActivityTemplateV2", array("updateModel" => $update_model));
+    }
+
+    /** 作废券模板
+     * @param $invalid_model 作废券模板对象
+     * @return mixed
+     */
+    public function invalid_activity_template_v2($invalid_model)
+    {
+        return $this->client->call("eleme.activity.coupon.invalidActivityTemplateV2", array("invalidModel" => $invalid_model));
+    }
+
+    /** 查询券模板
+     * @param $query_model 查询券模板对象
+     * @return mixed
+     */
+    public function query_by_template_id_v2($query_model)
+    {
+        return $this->client->call("eleme.activity.coupon.queryByTemplateIdV2", array("queryModel" => $query_model));
+    }
+
+    /** 根据券模板发券
+     * @param $present_with_template_model 发券对象
+     * @return mixed
+     */
+    public function present_coupon_with_template_id_v2($present_with_template_model)
+    {
+        return $this->client->call("eleme.activity.coupon.presentCouponWithTemplateIdV2", array("presentWithTemplateModel" => $present_with_template_model));
+    }
+
     /** 查询订单内营销相关数据
      * @param $order_id 饿了么订单Id
      * @return mixed
