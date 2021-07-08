@@ -39,6 +39,16 @@ class DataService extends RpcService
         return $this->client->call("eleme.data.single.getRestaurantSaleRatio", array("shopId" => $shop_id, "startTime" => $start_time, "endTime" => $end_time));
     }
 
+    /** 查询指定日期的店铺流量数据
+     * @param $shop_id 店铺ID
+     * @param $date 日期
+     * @return mixed
+     */
+    public function get_restaurant_flow_data($shop_id, $date)
+    {
+        return $this->client->call("eleme.data.single.getRestaurantFlowData", array("shopId" => $shop_id, "date" => $date));
+    }
+
     /** 查询指定时间段内连锁店营业数据汇总(历史数据)
      * @param $shop_ids 连锁子店Id
      * @param $start_time 查询起始日期

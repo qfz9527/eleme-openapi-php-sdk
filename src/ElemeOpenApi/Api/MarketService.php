@@ -57,4 +57,31 @@ class MarketService extends RpcService
         return $this->client->call("eleme.market.markFinishCookingTime", array("deviceInfo" => $device_info, "orderId" => $order_id));
     }
 
+    /** 线下服务上传订单物流单号
+     * @param $logistic_infos 订单物流信息(最多100条)
+     * @return mixed
+     */
+    public function upload_logistic_info($logistic_infos)
+    {
+        return $this->client->call("eleme.market.uploadLogisticInfo", array("logisticInfos" => $logistic_infos));
+    }
+
+    /** 获取文件上传秘钥信息
+    
+     * @return mixed
+     */
+    public function get_upload_file_signature_info()
+    {
+        return $this->client->call("eleme.market.getUploadFileSignatureInfo", array());
+    }
+
+    /** 上传图片信息
+     * @param $image_infos 图片信息(最多100条)
+     * @return mixed
+     */
+    public function upload_image_info($image_infos)
+    {
+        return $this->client->call("eleme.market.uploadImageInfo", array("imageInfos" => $image_infos));
+    }
+
 }

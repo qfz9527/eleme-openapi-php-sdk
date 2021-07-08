@@ -474,4 +474,42 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.batchGetRefundOrders", array("orderIds" => $order_ids));
     }
 
+    /** 获取订单退款金额分摊明细信息
+     * @param $order_id 订单Id
+     * @return mixed
+     */
+    public function query_refund_amount_info($order_id)
+    {
+        return $this->client->call("eleme.order.queryRefundAmountInfo", array("orderId" => $order_id));
+    }
+
+    /** 查询店铺订单出餐时长和推荐出餐时长
+     * @param $shop_id 店铺Id
+     * @return mixed
+     */
+    public function query_cooking_time_config($shop_id)
+    {
+        return $this->client->call("eleme.order.queryCookingTimeConfig", array("shopId" => $shop_id));
+    }
+
+    /** 设置店铺高峰期出餐时长
+     * @param $shop_id 店铺Id
+     * @param $configs 高峰期出餐时长配置
+     * @return mixed
+     */
+    public function set_peak_period_cooking_time($shop_id, $configs)
+    {
+        return $this->client->call("eleme.order.setPeakPeriodCookingTime", array("shopId" => $shop_id, "configs" => $configs));
+    }
+
+    /** 设置店铺非高峰期出餐时长
+     * @param $shop_id 店铺Id
+     * @param $config 非高峰期出餐配置
+     * @return mixed
+     */
+    public function set_non_peak_period_cooking_time($shop_id, $config)
+    {
+        return $this->client->call("eleme.order.setNonPeakPeriodCookingTime", array("shopId" => $shop_id, "config" => $config));
+    }
+
 }

@@ -165,6 +165,34 @@ class ShopService extends RpcService
         return $this->client->call("eleme.shop.getShopLicense", array("shopId" => $shop_id));
     }
 
+    /** 查询长链地址
+     * @param $query_long_line_address_d_t_o 查询长链地址表单
+     * @return mixed
+     */
+    public function get_wss_address($query_long_line_address_d_t_o)
+    {
+        return $this->client->call("eleme.shop.im.getWssAddress", array("queryLongLineAddressDTO" => $query_long_line_address_d_t_o));
+    }
+
+    /** 查询店铺_i_m状态
+     * @param $shop_id 店铺ID
+     * @return mixed
+     */
+    public function get_i_m_status($shop_id)
+    {
+        return $this->client->call("eleme.shop.im.getIMStatus", array("shopId" => $shop_id));
+    }
+
+    /** 更新店铺_i_m开关状态
+     * @param $shop_id 店铺ID
+     * @param $status IM开关状态（0：关闭 1：开启）
+     * @return mixed
+     */
+    public function update_i_m_status($shop_id, $status)
+    {
+        return $this->client->call("eleme.shop.im.updateIMStatus", array("shopId" => $shop_id, "status" => $status));
+    }
+
     /** 提交开店申请接口
      * @param $open_store_message 开店申请表单
      * @return mixed

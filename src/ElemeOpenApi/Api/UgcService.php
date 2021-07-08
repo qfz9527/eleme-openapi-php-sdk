@@ -241,6 +241,15 @@ class UgcService extends RpcService
         return $this->client->call("eleme.ugc.getORateResult", array("rateQuery" => $rate_query));
     }
 
+    /** 查询指定用户的评价信息
+     * @param $rate_query 评价查询参数
+     * @return mixed
+     */
+    public function get_o_user_rate_result($rate_query)
+    {
+        return $this->client->call("eleme.ugc.getOUserRateResult", array("rateQuery" => $rate_query));
+    }
+
     /** 统计评价信息数量
      * @param $rate_query 评价查询参数
      * @return mixed

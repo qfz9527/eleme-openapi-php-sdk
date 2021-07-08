@@ -112,6 +112,23 @@
 
 ## CHANGELOG:
 
+### [1.64.0]
+
+    Release Date : 2021-07-08
+
+- [Feature] 更新了商户数据服务
+- [Feature] 更新了经营体检
+- [Feature] 更新了金融服务
+- [Feature] 更新了服务市场服务
+- [Feature] 更新了消息服务
+- [Feature] 新增了商家服务中台服务
+- [Feature] 更新了订单服务
+- [Feature] 更新了商品服务
+- [Feature] 更新了招聘市场服务
+- [Feature] 更新了店铺服务
+- [Feature] 更新了订单评论服务
+
+
 ### [1.63.0]
 
     Release Date : 2021-01-12

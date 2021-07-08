@@ -849,6 +849,15 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.unbindVideo", array("itemId" => $item_id));
     }
 
+    /** 获取一个分类下的所有商品_v2接口
+     * @param $category_id 商品分类Id
+     * @return mixed
+     */
+    public function get_items_by_category_id_v2($category_id)
+    {
+        return $this->client->call("eleme.product.item.getItemsByCategoryIdV2", array("categoryId" => $category_id));
+    }
+
     /** 查询连锁总店商品信息
      * @param $iid 连锁总店商品Id
      * @return mixed
