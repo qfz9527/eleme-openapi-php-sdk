@@ -317,7 +317,7 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.mgetEvaluationStatus", array("orderIds" => $order_ids));
     }
 
-    /** 批量获取订单加小费信息
+    /** 批量获取订单添加小费信息
      * @param $order_ids 订单Id的列表
      * @return mixed
      */

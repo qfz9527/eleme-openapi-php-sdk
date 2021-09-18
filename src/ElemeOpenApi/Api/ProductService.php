@@ -55,6 +55,69 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.chain.menu.deleteMenu", array("mid" => $mid));
     }
 
+    /** 查询店铺下的所有有效渠道商品
+     * @param $shop_id 店铺id
+     * @return mixed
+     */
+    public function list_by_shop_id($shop_id)
+    {
+        return $this->client->call("eleme.product.channel.item.listByShopId", array("shopId" => $shop_id));
+    }
+
+    /** 根据商品id批量查询商品信息
+     * @param $item_ids 批量商品id列表
+     * @return mixed
+     */
+    public function list_by_item_ids($item_ids)
+    {
+        return $this->client->call("eleme.product.channel.item.listByItemIds", array("itemIds" => $item_ids));
+    }
+
+    /** 创建渠道商品
+     * @param $item 创建商品模型
+     * @return mixed
+     */
+    public function create($item)
+    {
+        return $this->client->call("eleme.product.channel.item.create", array("item" => $item));
+    }
+
+    /** 更新渠道商品
+     * @param $item 更新商品模型
+     * @return mixed
+     */
+    public function modify($item)
+    {
+        return $this->client->call("eleme.product.channel.item.modify", array("item" => $item));
+    }
+
+    /** 删除渠道商品
+     * @param $item_id 商品Id
+     * @return mixed
+     */
+    public function remove($item_id)
+    {
+        return $this->client->call("eleme.product.channel.item.remove", array("itemId" => $item_id));
+    }
+
+    /** 批量设置售卖状态
+     * @param $item_sale_status_map 商品id和对应的售卖状态集合
+     * @return mixed
+     */
+    public function batch_set_sale_status($item_sale_status_map)
+    {
+        return $this->client->call("eleme.product.channel.item.batchSetSaleStatus", array("itemSaleStatusMap" => $item_sale_status_map));
+    }
+
+    /** 批量设置库存
+     * @param $sku_stock_map 规格id和对应的库存值
+     * @return mixed
+     */
+    public function batch_set_stock($sku_stock_map)
+    {
+        return $this->client->call("eleme.product.channel.item.batchSetStock", array("skuStockMap" => $sku_stock_map));
+    }
+
     /** 查询连锁总店商品分组
      * @param $gid 连锁总店商品分组Id
      * @return mixed
@@ -436,6 +499,15 @@ class ProductService extends RpcService
     public function update_item($item_id, $category_id, $properties)
     {
         return $this->client->call("eleme.product.item.updateItem", array("itemId" => $item_id, "categoryId" => $category_id, "properties" => $properties));
+    }
+
+    /** 批量更新商品接口
+     * @param $requests 批量更新请求
+     * @return mixed
+     */
+    public function batch_update_items($requests)
+    {
+        return $this->client->call("eleme.product.item.batchUpdateItems", array("requests" => $requests));
     }
 
     /** 批量置满库存
