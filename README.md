@@ -112,6 +112,17 @@
 
 ## CHANGELOG:
 
+### [1.66.0]
+
+    Release Date : 2021-10-29
+
+- [Feature] 更新了金融服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了订单服务
+- [Feature] 更新了商户信用分服务
+- [Feature] 更新了订单评论服务
+
+
 ### [1.65.0]
 
     Release Date : 2021-09-18

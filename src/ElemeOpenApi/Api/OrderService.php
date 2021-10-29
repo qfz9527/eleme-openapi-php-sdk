@@ -317,7 +317,7 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.mgetEvaluationStatus", array("orderIds" => $order_ids));
     }
 
-    /** 批量获取订单添加小费信息
+    /** 批量获取订单加小费信息
      * @param $order_ids 订单Id的列表
      * @return mixed
      */
@@ -510,6 +510,15 @@ class OrderService extends RpcService
     public function set_non_peak_period_cooking_time($shop_id, $config)
     {
         return $this->client->call("eleme.order.setNonPeakPeriodCookingTime", array("shopId" => $shop_id, "config" => $config));
+    }
+
+    /** 商户设置延长出餐
+     * @param $request 延长出餐时长
+     * @return mixed
+     */
+    public function set_delay_cooking_time_setting($request)
+    {
+        return $this->client->call("eleme.order.setDelayCookingTimeSetting", array("request" => $request));
     }
 
 }

@@ -195,6 +195,19 @@ class UgcService extends RpcService
         return $this->client->call("eleme.ugc.replyRateByRateIdsAndShopId", array("rateIds" => $rate_ids, "shopId" => $shop_id, "replyType" => $reply_type, "reply" => $reply));
     }
 
+    /** 通过rate_ids和shop_id 批量回复指定类型的评论(推荐)
+     * @param $rate_ids  评论编号
+     * @param $shop_id  餐厅id
+     * @param $reply_type 评论类型
+     * @param $reply 回复的内容
+     * @param $template_id 使用模板ID
+     * @return mixed
+     */
+    public function reply_rate_by_rate_ids_and_shop_id_v2($rate_ids, $shop_id, $reply_type, $reply, $template_id)
+    {
+        return $this->client->call("eleme.ugc.replyRateByRateIdsAndShopIdV2", array("rateIds" => $rate_ids, "shopId" => $shop_id, "replyType" => $reply_type, "reply" => $reply, "templateId" => $template_id));
+    }
+
     /** 根据订单_i_d赠送代金券给该订单的评价用户
      * @param $order_id  订单编号
      * @param $coupon 需要赠送的代金券信息
@@ -308,6 +321,27 @@ class UgcService extends RpcService
     public function get_coupon_extends_info($extends_queries)
     {
         return $this->client->call("eleme.ugc.getCouponExtendsInfo", array("extendsQueries" => $extends_queries));
+    }
+
+    /** 查询店铺评分及各评分因子数据
+     * @param $supplier_id  连锁店id
+     * @param $shop_ids  店铺id集合
+     * @param $offset  页面偏移量
+     * @param $limit  页面大小
+     * @return mixed
+     */
+    public function get_shop_factor_infos($supplier_id, $shop_ids, $offset, $limit)
+    {
+        return $this->client->call("eleme.ugc.getShopFactorInfos", array("supplierId" => $supplier_id, "shopIds" => $shop_ids, "offset" => $offset, "limit" => $limit));
+    }
+
+    /** 查询订单评价详情
+     * @param $order_id  页面大小
+     * @return mixed
+     */
+    public function get_order_rate_detail($order_id)
+    {
+        return $this->client->call("eleme.ugc.getOrderRateDetail", array("orderId" => $order_id));
     }
 
 }

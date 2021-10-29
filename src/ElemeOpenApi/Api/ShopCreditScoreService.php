@@ -53,6 +53,16 @@ class ShopCreditScoreService extends RpcService
         return $this->client->call("eleme.shopCreditScore.single.getShopCreditScore", array("shopId" => $shop_id));
     }
 
+    /** 根据商户id查询商户处置记录
+     * @param $shop_id 商户ID
+     * @param $event_id 事件id
+     * @return mixed
+     */
+    public function get_shop_punish_list($shop_id, $event_id)
+    {
+        return $this->client->call("eleme.shopCreditScore.single.getShopPunishList", array("shopId" => $shop_id, "eventId" => $event_id));
+    }
+
     /** 根据商户_i_d查询店铺权益规则
      * @param $shop_id 商户ID
      * @return mixed
