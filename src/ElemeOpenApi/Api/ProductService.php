@@ -501,7 +501,7 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.updateItem", array("itemId" => $item_id, "categoryId" => $category_id, "properties" => $properties));
     }
 
-    /** 批量更新商品接口
+    /** 批量更新商品
      * @param $requests 批量更新请求
      * @return mixed
      */

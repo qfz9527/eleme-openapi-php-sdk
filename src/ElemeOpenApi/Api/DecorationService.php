@@ -173,6 +173,16 @@ class DecorationService extends RpcService
         return $this->client->call("eleme.decoration.poster.getPosterDetailById", array("posterId" => $poster_id));
     }
 
+    /** 根据海报_i_d获取海报详情 _v2
+     * @param $poster_id 海报ID
+     * @param $shop_id 当前店铺ID，默认情况下和当前帐号一致，如果是连锁分店想切换到子店进行操作，那么使用子店的店铺id进行设置
+     * @return mixed
+     */
+    public function get_poster_detail_by_id_v2($poster_id, $shop_id)
+    {
+        return $this->client->call("eleme.decoration.poster.getPosterDetailByIdV2", array("posterId" => $poster_id, "shopId" => $shop_id));
+    }
+
     /** 查询有效的海报信息集合
     
      * @return mixed
@@ -180,6 +190,15 @@ class DecorationService extends RpcService
     public function query_effective_posters()
     {
         return $this->client->call("eleme.decoration.poster.queryEffectivePosters", array());
+    }
+
+    /** 查询有效的海报信息集合 _v2
+     * @param $shop_id 当前店铺ID，默认情况下和当前帐号一致，如果是连锁分店想切换到子店进行操作，那么使用子店的店铺id进行设置
+     * @return mixed
+     */
+    public function query_effective_posters_v2($shop_id)
+    {
+        return $this->client->call("eleme.decoration.poster.queryEffectivePostersV2", array("shopId" => $shop_id));
     }
 
     /** 获取历史上传过的海报图片
@@ -234,15 +253,6 @@ class DecorationService extends RpcService
     public function upload($image)
     {
         return $this->client->call("eleme.decoration.image.upload", array("image" => $image));
-    }
-
-    /** 根据图片_h_a_s_h值获取图片信息
-     * @param $hash 图片HASH值
-     * @return mixed
-     */
-    public function get_image($hash)
-    {
-        return $this->client->call("eleme.decoration.image.getImage", array("hash" => $hash));
     }
 
 }

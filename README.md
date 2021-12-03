@@ -112,6 +112,16 @@
 
 ## CHANGELOG:
 
+### [1.67.0]
+
+    Release Date : 2021-12-03
+
+- [Feature] 更新了门店装修服务
+- [Feature] 更新了金融服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了商品服务
+
+
 ### [1.66.0]
 
     Release Date : 2021-10-29
