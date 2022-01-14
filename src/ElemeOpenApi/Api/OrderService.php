@@ -521,4 +521,13 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.setDelayCookingTimeSetting", array("request" => $request));
     }
 
+    /** 批量获取订单地址
+     * @param $order_ids 订单ID列表
+     * @return mixed
+     */
+    public function batch_get_order_address($order_ids)
+    {
+        return $this->client->call("eleme.order.batchGetOrderAddress", array("orderIds" => $order_ids));
+    }
+
 }
