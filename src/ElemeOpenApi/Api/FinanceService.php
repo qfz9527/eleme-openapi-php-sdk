@@ -8,13 +8,22 @@ namespace ElemeOpenApi\Api;
 class FinanceService extends RpcService
 {
 
-    /** 查询商户余额,返回可用余额和总余额
+    /** 查询商户余额,返回可用余额和总余额(弃用，参见新接口query_new_balance)
      * @param $shop_id 饿了么店铺id
      * @return mixed
      */
     public function query_balance($shop_id)
     {
         return $this->client->call("eleme.finance.queryBalance", array("shopId" => $shop_id));
+    }
+
+    /** 查询商户余额 返回可用余额和子账户余额明细
+     * @param $shop_id 饿了么总店店铺id
+     * @return mixed
+     */
+    public function query_new_balance($shop_id)
+    {
+        return $this->client->call("eleme.finance.queryNewBalance", array("shopId" => $shop_id));
     }
 
     /** 查询余额流水,有流水改动的交易
@@ -144,6 +153,24 @@ class FinanceService extends RpcService
     public function query_allowance_bill_detail($shop_id, $query)
     {
         return $this->client->call("eleme.finance.queryAllowanceBillDetail", array("shopId" => $shop_id, "query" => $query));
+    }
+
+    /** 查询商户帐期和名称
+     * @param $term_and_name_query 查询条件
+     * @return mixed
+     */
+    public function query_term_and_name($term_and_name_query)
+    {
+        return $this->client->call("eleme.finance.queryTermAndName", array("termAndNameQuery" => $term_and_name_query));
+    }
+
+    /** 子资金账号查询关系
+     * @param $relations_request 查询条件
+     * @return mixed
+     */
+    public function query_by_slave($relations_request)
+    {
+        return $this->client->call("eleme.finance.queryBySlave", array("relationsRequest" => $relations_request));
     }
 
 }

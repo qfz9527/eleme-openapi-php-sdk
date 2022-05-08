@@ -393,6 +393,34 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.category.removeDayPartingStickTime", array("shopId" => $shop_id, "categoryId" => $category_id));
     }
 
+    /** 查询新版商品后台类目
+     * @param $shop_id 店铺Id
+     * @return mixed
+     */
+    public function get_back_category_v2($shop_id)
+    {
+        return $this->client->call("eleme.product.category.getBackCategoryV2", array("shopId" => $shop_id));
+    }
+
+    /** 查询新版商品后台类目属性
+     * @param $shop_id 店铺Id
+     * @param $back_category_id 后台类目id
+     * @return mixed
+     */
+    public function get_back_category_property_v2($shop_id, $back_category_id)
+    {
+        return $this->client->call("eleme.product.category.getBackCategoryPropertyV2", array("shopId" => $shop_id, "backCategoryId" => $back_category_id));
+    }
+
+    /** 查询新版商品原材料
+     * @param $shop_id 店铺Id
+     * @return mixed
+     */
+    public function get_materials($shop_id)
+    {
+        return $this->client->call("eleme.product.category.getMaterials", array("shopId" => $shop_id));
+    }
+
     /** 添加套餐
      * @param $category_id 分类Id
      * @param $o_package 套餐属性
@@ -526,6 +554,16 @@ class ProductService extends RpcService
     public function batch_clear_stock($spec_ids)
     {
         return $this->client->call("eleme.product.item.batchClearStock", array("specIds" => $spec_ids));
+    }
+
+    /** 批量修改库存详细信息
+     * @param $shop_id 店铺Id
+     * @param $update_stock_requests 更新规格请求列表
+     * @return mixed
+     */
+    public function batch_update_stock_detail($shop_id, $update_stock_requests)
+    {
+        return $this->client->call("eleme.product.item.batchUpdateStockDetail", array("shopId" => $shop_id, "updateStockRequests" => $update_stock_requests));
     }
 
     /** 批量上架商品
@@ -787,6 +825,15 @@ class ProductService extends RpcService
     public function update_multi_spec_item($item_id, $category_id, $properties)
     {
         return $this->client->call("eleme.product.item.updateMultiSpecItem", array("itemId" => $item_id, "categoryId" => $category_id, "properties" => $properties));
+    }
+
+    /** 批量更新多规格商品
+     * @param $requests 商品规格
+     * @return mixed
+     */
+    public function batch_update_multi_spec_item($requests)
+    {
+        return $this->client->call("eleme.product.item.batchUpdateMultiSpecItem", array("requests" => $requests));
     }
 
     /** 设置配料组数据

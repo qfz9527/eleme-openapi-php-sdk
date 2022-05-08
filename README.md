@@ -112,6 +112,16 @@
 
 ## CHANGELOG:
 
+### [1.69.0]
+
+    Release Date : 2022-05-08
+
+- [Feature] 更新了金融服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了订单服务
+- [Feature] 更新了商品服务
+
+
 ### [1.68.0]
 
     Release Date : 2022-01-14
