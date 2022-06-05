@@ -11,6 +11,12 @@
 
 ### 安装
 
+#### 安装命令(20220605 变更)
+```php
+    composer require eleme-openapi-php-sdk/eleme-openapi-php-sdk
+```
+
+#### 旧安装命令(不建议使用)
 ```php
     composer require eleme-openapi/eleme-openapi-sdk
 ```
