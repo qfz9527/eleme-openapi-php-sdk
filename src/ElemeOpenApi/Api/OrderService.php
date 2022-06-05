@@ -110,35 +110,6 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.noMoreDeliveryLite", array("orderId" => $order_id));
     }
 
-    /** 订单确认送达
-     * @param $order_id 订单Id
-     * @return mixed
-     */
-    public function received_order_lite($order_id)
-    {
-        return $this->client->call("eleme.order.receivedOrderLite", array("orderId" => $order_id));
-    }
-
-    /** 订单确认送出(自配送)
-     * @param $order_id 订单Id
-     * @param $phone 配送者电话
-     * @return mixed
-     */
-    public function start_delivery_by_self($order_id, $phone)
-    {
-        return $this->client->call("eleme.order.startDeliveryBySelf", array("orderId" => $order_id, "phone" => $phone));
-    }
-
-    /** 订单确认送达(自配送)
-     * @param $order_id 订单Id
-     * @param $phone 配送者电话
-     * @return mixed
-     */
-    public function complete_delivery_by_self($order_id, $phone)
-    {
-        return $this->client->call("eleme.order.completeDeliveryBySelf", array("orderId" => $order_id, "phone" => $phone));
-    }
-
     /** 回复催单
      * @param $remind_id 催单Id
      * @param $type 回复类别

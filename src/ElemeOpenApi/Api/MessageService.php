@@ -35,4 +35,22 @@ class MessageService extends RpcService
         return $this->client->call("eleme.message.queryFailedMessageLog", array("request" => $request));
     }
 
+    /** 禁止推送消息设置
+     * @param $disable_push_request 禁止推送消息设置
+     * @return mixed
+     */
+    public function disable_push_config($disable_push_request)
+    {
+        return $this->client->call("eleme.message.disablePushConfig", array("disablePushRequest" => $disable_push_request));
+    }
+
+    /** 查询已经设置禁用推送的设置信息
+     * @param $disable_push_query 查询已经设置禁用推送的设置信息
+     * @return mixed
+     */
+    public function query_disable_push($disable_push_query)
+    {
+        return $this->client->call("eleme.message.queryDisablePush", array("disablePushQuery" => $disable_push_query));
+    }
+
 }
