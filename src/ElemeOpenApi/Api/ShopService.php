@@ -256,4 +256,13 @@ class ShopService extends RpcService
         return $this->client->call("eleme.shop.setup.uploadImageWithRemoteUrl", array("url" => $url));
     }
 
+    /** 第三方服务商传递摄像头状态变更消息
+     * @param $video_device_d_t_o 设备状态信息
+     * @return mixed
+     */
+    public function set_video_status($video_device_d_t_o)
+    {
+        return $this->client->call("eleme.shop.video.setVideoStatus", array("videoDeviceDTO" => $video_device_d_t_o));
+    }
+
 }

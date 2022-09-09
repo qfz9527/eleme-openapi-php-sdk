@@ -493,7 +493,7 @@ class OrderService extends RpcService
     }
 
     /** 批量获取订单地址
-     * @param $order_ids 订单ID列表
+     * @param $order_ids 查询订单对应地址信息
      * @return mixed
      */
     public function batch_get_order_address($order_ids)

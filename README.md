@@ -118,6 +118,15 @@
 
 ## CHANGELOG:
 
+### [1.71.0]
+
+    Release Date : 2022-09-09
+
+- [Feature] 更新了消息服务
+- [Feature] 更新了订单服务
+- [Feature] 更新了店铺服务
+
+
 ### [1.70.0]
 
     Release Date : 2022-06-05

@@ -1,15 +1,15 @@
 {
-  "name": "eleme-openapi-php-sdk/eleme-openapi-php-sdk",
+  "name": "eleme-openapi/eleme-openapi-sdk",
   "description": "eleme-openapi-php-sdk",
   "license": "MIT",
   "keywords": [
     "eleme"
   ],
-  "version": "1.70.0",
+  "version": "1.71.0",
   "authors": [
     {
-      "name": "eleme",
-      "email": "sdk.openapi.merchant@alibaba-inc.com"
+      "name": "tangyan",
+      "email": "open.shop@ele.me"
     }
   ],
   "require": {
