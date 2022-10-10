@@ -17,6 +17,26 @@ class ShopService extends RpcService
         return $this->client->call("eleme.shop.getShop", array("shopId" => $shop_id));
     }
 
+    /** 抖音回调接口
+     * @param $ele_dto 回调对象
+     * @return mixed
+     */
+    public function dy_call_back_for_ele($ele_dto)
+    {
+        return $this->client->call("eleme.shop.dyCallBackForEle", array("ele_dto" => $ele_dto));
+    }
+
+    /** 抖音解绑回调接口
+     * @param $account_id 抖音总户ID
+     * @param $merchant_id 抖音门店户ID
+     * @param $version 版本号
+     * @return mixed
+     */
+    public function dy_un_bind_shop_for_ele($account_id, $merchant_id, $version)
+    {
+        return $this->client->call("eleme.shop.dyUnBindShopForEle", array("accountId" => $account_id, "merchantId" => $merchant_id, "version" => $version));
+    }
+
     /** 更新店铺信息
      * @param $shop_id 店铺Id
      * @param $properties 店铺属性

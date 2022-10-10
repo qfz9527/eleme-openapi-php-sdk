@@ -977,6 +977,15 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.getItemsByCategoryIdV2", array("categoryId" => $category_id));
     }
 
+    /** 抖音审核回调
+     * @param $request 回调请求参数
+     * @return mixed
+     */
+    public function dy_audit_status_call_back($request)
+    {
+        return $this->client->call("eleme.product.dy.dyAuditStatusCallBack", array("request" => $request));
+    }
+
     /** 查询连锁总店商品信息
      * @param $iid 连锁总店商品Id
      * @return mixed
