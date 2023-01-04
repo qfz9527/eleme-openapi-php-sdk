@@ -855,7 +855,7 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.removeIngredientGroup", array("itemId" => $item_id));
     }
 
-    /** 获取商品原材料数据(新版)
+    /** 获取商品原材料数据（即将下线）
      * @param $shop_id 店铺ID
      * @return mixed
      */
@@ -975,6 +975,42 @@ class ProductService extends RpcService
     public function get_items_by_category_id_v2($category_id)
     {
         return $this->client->call("eleme.product.item.getItemsByCategoryIdV2", array("categoryId" => $category_id));
+    }
+
+    /** 批量更新商品信息
+     * @param $request 店铺商品信息
+     * @return mixed
+     */
+    public function batch_update_shop_items($request)
+    {
+        return $this->client->call("eleme.product.item.batchUpdateShopItems", array("request" => $request));
+    }
+
+    /** 批量更新商品配料信息
+     * @param $request 店铺商品信息
+     * @return mixed
+     */
+    public function batch_update_item_ingredient($request)
+    {
+        return $this->client->call("eleme.product.item.batchUpdateItemIngredient", array("request" => $request));
+    }
+
+    /** 批量更新商品类目、类目属性、主材料信息
+     * @param $request 店铺商品信息
+     * @return mixed
+     */
+    public function batch_update_item_category($request)
+    {
+        return $this->client->call("eleme.product.item.batchUpdateItemCategory", array("request" => $request));
+    }
+
+    /** 获取店铺内修改受限制的商品，包含两类商品：有锁的商品和有pid关系的商品。这两种商品信息修改受到限制。
+     * @param $shop_id 店铺id
+     * @return mixed
+     */
+    public function get_shop_limited_items($shop_id)
+    {
+        return $this->client->call("eleme.product.item.getShopLimitedItems", array("shopId" => $shop_id));
     }
 
     /** 抖音审核回调

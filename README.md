@@ -118,6 +118,24 @@
 
 ## CHANGELOG:
 
+### [1.75.0]
+
+    Release Date : 2023-01-04
+
+- [Feature] 更新了活动服务
+- [Feature] 新增了发票服务
+- [Feature] 更新了消息服务
+- [Feature] 新增了新消息服务
+- [Feature] 新增了抖音服务
+- [Feature] 新增了开放服务
+- [Feature] 新增了抖音商品信息补全服务
+- [Feature] 新增了提供给dy的查询服务
+ ，
+ 包括：服务数据，仲裁信息，赔付信息等
+- [Feature] 新增了抖音风险同步服务
+- [Feature] 更新了商品服务
+
+
 ### [1.74.0]
 
     Release Date : 2022-11-07

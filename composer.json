@@ -5,11 +5,11 @@
   "keywords": [
     "eleme"
   ],
-  "version": "1.74.0",
+  "version": "1.75.0",
   "authors": [
     {
-      "name": "eleme",
-      "email": "sdk.openapi.merchant@alibaba-inc.com"
+      "name": "tangyan",
+      "email": "open.shop@ele.me"
     }
   ],
   "require": {
