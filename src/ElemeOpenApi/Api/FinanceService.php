@@ -114,4 +114,25 @@ class FinanceService extends RpcService
         return $this->client->call("eleme.finance.queryBySlave", array("relationsRequest" => $relations_request));
     }
 
+    /** 查询连锁总店结算子门店关系列表
+     * @param $chain_id 饿了么连锁店店铺id
+     * @param $checkout_date 入账日期
+     * @return mixed
+     */
+    public function query_slave_shop_ids_by_chain_id($chain_id, $checkout_date)
+    {
+        return $this->client->call("eleme.finance.querySlaveShopIdsByChainId", array("chainId" => $chain_id, "checkoutDate" => $checkout_date));
+    }
+
+    /** 批量查询分店商品维度账单数据
+     * @param $settle_account_shop_id 结算入账ID
+     * @param $shop_id_list 门店id列表（限制100）
+     * @param $query 查询条件
+     * @return mixed
+     */
+    public function query_goods_orders($settle_account_shop_id, $shop_id_list, $query)
+    {
+        return $this->client->call("eleme.finance.queryGoodsOrders", array("settleAccountShopId" => $settle_account_shop_id, "shopIdList" => $shop_id_list, "query" => $query));
+    }
+
 }

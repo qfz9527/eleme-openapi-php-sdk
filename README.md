@@ -118,6 +118,19 @@
 
 ## CHANGELOG:
 
+### [1.76.0]
+
+    Release Date : 2023-03-10
+
+- [Feature] 更新了活动服务
+- [Feature] 更新了金融服务
+- [Feature] 更新了服务市场服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了新消息服务
+- [Feature] 更新了商品服务
+- [Feature] 新增了小票服务
+
+
 ### [1.75.0]
 
     Release Date : 2023-01-04

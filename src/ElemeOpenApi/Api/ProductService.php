@@ -1022,6 +1022,24 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.dy.dyAuditStatusCallBack", array("request" => $request));
     }
 
+    /** 查询单店铺商品诊断数据
+     * @param $shop_id 店铺ID
+     * @return mixed
+     */
+    public function get_shop_commodity_diagnosis_data($shop_id)
+    {
+        return $this->client->call("eleme.product.renovate.getShopCommodityDiagnosisData", array("shopId" => $shop_id));
+    }
+
+    /** 一键 & 批量优化店铺问题商品详情信息
+     * @param $request 请求
+     * @return mixed
+     */
+    public function agree_shop_commodity_diagnosis_problem($request)
+    {
+        return $this->client->call("eleme.product.renovate.agreeShopCommodityDiagnosisProblem", array("request" => $request));
+    }
+
     /** 查询连锁总店商品信息
      * @param $iid 连锁总店商品Id
      * @return mixed

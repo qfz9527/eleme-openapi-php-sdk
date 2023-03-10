@@ -84,4 +84,13 @@ class MarketService extends RpcService
         return $this->client->call("eleme.market.uploadImageInfo", array("imageInfos" => $image_infos));
     }
 
+    /** 查询服务市场线下服务订单
+     * @param $order_no 服务市场订单编号
+     * @return mixed
+     */
+    public function query_offline_order($order_no)
+    {
+        return $this->client->call("eleme.market.queryOfflineOrder", array("orderNo" => $order_no));
+    }
+
 }
