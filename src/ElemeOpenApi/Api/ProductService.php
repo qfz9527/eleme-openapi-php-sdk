@@ -846,6 +846,16 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.setIngredientGroup", array("itemId" => $item_id, "groupRelations" => $group_relations));
     }
 
+    /** 设置配料组数据
+     * @param $spec_id 商品Id
+     * @param $group_relations 配料组信息
+     * @return mixed
+     */
+    public function set_sku_ingredient_group($spec_id, $group_relations)
+    {
+        return $this->client->call("eleme.product.item.setSkuIngredientGroup", array("specId" => $spec_id, "groupRelations" => $group_relations));
+    }
+
     /** 删除配料组数据
      * @param $item_id 商品Id
      * @return mixed
@@ -919,6 +929,16 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.bindIngredientGroups", array("itemId" => $item_id, "ingredientGroupIds" => $ingredient_group_ids));
     }
 
+    /** 给主料商品绑定配料组（规格维度）
+     * @param $spec_id 主料商品规格id
+     * @param $ingredient_group_ids 配料组id列表
+     * @return mixed
+     */
+    public function bind_sku_ingredient_groups($spec_id, $ingredient_group_ids)
+    {
+        return $this->client->call("eleme.product.item.bindSkuIngredientGroups", array("specId" => $spec_id, "ingredientGroupIds" => $ingredient_group_ids));
+    }
+
     /** 解绑配料组
      * @param $item_id 主料商品id
      * @param $ingredient_group_ids 配料组id列表
@@ -929,6 +949,16 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.unbindIngredientGroups", array("itemId" => $item_id, "ingredientGroupIds" => $ingredient_group_ids));
     }
 
+    /** 解绑配料组（规格维度）
+     * @param $spec_id 主料商品规格id
+     * @param $ingredient_group_ids 配料组id列表
+     * @return mixed
+     */
+    public function unbind_sku_ingredient_groups($spec_id, $ingredient_group_ids)
+    {
+        return $this->client->call("eleme.product.item.unbindSkuIngredientGroups", array("specId" => $spec_id, "ingredientGroupIds" => $ingredient_group_ids));
+    }
+
     /** 移除主料商品的全部配料组
      * @param $item_id 主料商品id
      * @return mixed
@@ -936,6 +966,15 @@ class ProductService extends RpcService
     public function remove_main_item_ingredient_groups($item_id)
     {
         return $this->client->call("eleme.product.item.removeMainItemIngredientGroups", array("itemId" => $item_id));
+    }
+
+    /** 移除主料商品的全部配料组（规格维度）
+     * @param $spec_id 主料商品规格id
+     * @return mixed
+     */
+    public function remove_sku_ingredient_groups($spec_id)
+    {
+        return $this->client->call("eleme.product.item.removeSkuIngredientGroups", array("specId" => $spec_id));
     }
 
     /** 更新单店商品所属分组
@@ -978,30 +1017,33 @@ class ProductService extends RpcService
     }
 
     /** 批量更新商品信息
+     * @param $shop_id 店铺id
      * @param $request 店铺商品信息
      * @return mixed
      */
-    public function batch_update_shop_items($request)
+    public function batch_update_shop_items($shop_id, $request)
     {
-        return $this->client->call("eleme.product.item.batchUpdateShopItems", array("request" => $request));
+        return $this->client->call("eleme.product.item.batchUpdateShopItems", array("shopId" => $shop_id, "request" => $request));
     }
 
     /** 批量更新商品配料信息
+     * @param $shop_id 店铺id
      * @param $request 店铺商品信息
      * @return mixed
      */
-    public function batch_update_item_ingredient($request)
+    public function batch_update_item_ingredient($shop_id, $request)
     {
-        return $this->client->call("eleme.product.item.batchUpdateItemIngredient", array("request" => $request));
+        return $this->client->call("eleme.product.item.batchUpdateItemIngredient", array("shopId" => $shop_id, "request" => $request));
     }
 
     /** 批量更新商品类目、类目属性、主材料信息
+     * @param $shop_id 店铺id
      * @param $request 店铺商品信息
      * @return mixed
      */
-    public function batch_update_item_category($request)
+    public function batch_update_item_category($shop_id, $request)
     {
-        return $this->client->call("eleme.product.item.batchUpdateItemCategory", array("request" => $request));
+        return $this->client->call("eleme.product.item.batchUpdateItemCategory", array("shopId" => $shop_id, "request" => $request));
     }
 
     /** 获取店铺内修改受限制的商品，包含两类商品：有锁的商品和有pid关系的商品。这两种商品信息修改受到限制。
@@ -1011,6 +1053,15 @@ class ProductService extends RpcService
     public function get_shop_limited_items($shop_id)
     {
         return $this->client->call("eleme.product.item.getShopLimitedItems", array("shopId" => $shop_id));
+    }
+
+    /** 测试专用，获取测试店铺id数据
+    
+     * @return mixed
+     */
+    public function get_test_shop_ids()
+    {
+        return $this->client->call("eleme.product.item.getTestShopIds", array());
     }
 
     /** 抖音审核回调
@@ -1155,6 +1206,49 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.chain.item.deleteSku", array("pId" => $p_id));
     }
 
+    /** 发布一个品牌标品
+     * @param $shop_id 店铺id
+     * @param $spu 品牌标品
+     * @param $is_auto_sync 是否自动同步
+     * @return mixed
+     */
+    public function publish_spu($shop_id, $spu, $is_auto_sync)
+    {
+        return $this->client->call("eleme.product.spu.publishSpu", array("shopId" => $shop_id, "spu" => $spu, "isAutoSync" => $is_auto_sync));
+    }
+
+    /** 删除一个品牌标品
+     * @param $shop_id 店铺id
+     * @param $spu_out_code spuOutCode
+     * @param $is_auto_sync 是否自动同步
+     * @return mixed
+     */
+    public function delete_spu($shop_id, $spu_out_code, $is_auto_sync)
+    {
+        return $this->client->call("eleme.product.spu.deleteSpu", array("shopId" => $shop_id, "spuOutCode" => $spu_out_code, "isAutoSync" => $is_auto_sync));
+    }
+
+    /** 修改_s_p_u上下架状态
+     * @param $shop_id 店铺id
+     * @param $spu_out_code spuOutCode
+     * @param $sale_status 售卖状态,0:上架;1:下架
+     * @param $is_auto_sync 是否自动同步
+     * @return mixed
+     */
+    public function update_spu_sale_status($shop_id, $spu_out_code, $sale_status, $is_auto_sync)
+    {
+        return $this->client->call("eleme.product.spu.updateSpuSaleStatus", array("shopId" => $shop_id, "spuOutCode" => $spu_out_code, "saleStatus" => $sale_status, "isAutoSync" => $is_auto_sync));
+    }
+
+    /** 分页获取店铺下的_s_p_u
+     * @param $query_page 分页查询参数
+     * @return mixed
+     */
+    public function query_spu_by_page($query_page)
+    {
+        return $this->client->call("eleme.product.spu.querySpuByPage", array("queryPage" => $query_page));
+    }
+
     /** 上传图片，返回图片的hash值
      * @param $image 文件内容base64编码值
      * @return mixed
@@ -1189,6 +1283,47 @@ class ProductService extends RpcService
     public function get_image_url($hash)
     {
         return $this->client->call("eleme.file.getImageUrl", array("hash" => $hash));
+    }
+
+    /** 发布品牌菜单
+     * @param $shop_id 店铺id
+     * @param $menu 品牌菜单信息
+     * @return mixed
+     */
+    public function publish_menu($shop_id, $menu)
+    {
+        return $this->client->call("eleme.product.menu.publishMenu", array("shopId" => $shop_id, "menu" => $menu));
+    }
+
+    /** 获取菜单信息
+     * @param $shop_id 店铺id
+     * @param $menu_out_code 菜单outCode
+     * @return mixed
+     */
+    public function get_menu($shop_id, $menu_out_code)
+    {
+        return $this->client->call("eleme.product.menu.getMenu", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code));
+    }
+
+    /** 同步菜单标品到子门店
+     * @param $shop_id 店铺id
+     * @param $menu_out_code 菜单outCode
+     * @param $sync_shop_spus 同步店铺id列表
+     * @return mixed
+     */
+    public function sync_menu($shop_id, $menu_out_code, $sync_shop_spus)
+    {
+        return $this->client->call("eleme.product.menu.syncMenu", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code, "syncShopSpus" => $sync_shop_spus));
+    }
+
+    /** 获取同步任务详情
+     * @param $shop_id 店铺id
+     * @param $task_id 任务id
+     * @return mixed
+     */
+    public function get_sync_task($shop_id, $task_id)
+    {
+        return $this->client->call("eleme.product.menu.getSyncTask", array("shopId" => $shop_id, "taskId" => $task_id));
     }
 
 }

@@ -118,6 +118,17 @@
 
 ## CHANGELOG:
 
+### [1.77.0]
+
+    Release Date : 2023-05-10
+
+- [Feature] 更新了活动服务
+- [Feature] 新增了自然人商户入驻服务
+- [Feature] 更新了消息服务
+- [Feature] 新增了开店服务
+- [Feature] 更新了商品服务
+
+
 ### [1.76.0]
 
     Release Date : 2023-03-10
