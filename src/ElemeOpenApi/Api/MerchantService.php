@@ -17,13 +17,13 @@ class MerchantService extends RpcService
         return $this->client->call("eleme.merchant.getMerchantContractTemplate", array());
     }
 
-    /** 获取oss签名(用于资质证照类文件上传)
+    /** 文件上传(用于资质证照类文件上传)
      * @param $request 请求参数
      * @return mixed
      */
-    public function get_oss_signature($request)
+    public function upload($request)
     {
-        return $this->client->call("eleme.merchant.getOssSignature", array("request" => $request));
+        return $this->client->call("eleme.merchant.upload", array("request" => $request));
     }
 
     /** 发送普通短信验证码(下发短信验证码至商户手机号)
@@ -99,7 +99,7 @@ class MerchantService extends RpcService
     }
 
     /** 查询商户入驻申请详情
-     * @param $request 申请业务ID
+     * @param $request 请求参数
      * @return mixed
      */
     public function get_by_id($request)

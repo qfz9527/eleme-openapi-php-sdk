@@ -26,13 +26,13 @@ class OpenShopService extends RpcService
         return $this->client->call("eleme.openShop.getAllDivisionInfo", array());
     }
 
-    /** 获取oss签名(用于资质证照类文件上传)
+    /** 资质证照类文件上传
      * @param $request 请求参数
      * @return mixed
      */
-    public function get_oss_signature($request)
+    public function upload_file($request)
     {
-        return $this->client->call("eleme.openShop.getOssSignature", array("request" => $request));
+        return $this->client->call("eleme.openShop.uploadFile", array("request" => $request));
     }
 
     /** 保存草稿

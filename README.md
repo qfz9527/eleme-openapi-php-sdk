@@ -118,6 +118,15 @@
 
 ## CHANGELOG:
 
+### [1.78.0]
+
+    Release Date : 2023-06-02
+
+- [Feature] 更新了自然人商户入驻服务
+- [Feature] 更新了开店服务
+
+
+
 ### [1.77.0]
 
     Release Date : 2023-05-10
