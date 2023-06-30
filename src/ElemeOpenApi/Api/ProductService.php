@@ -1055,6 +1055,15 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.getShopLimitedItems", array("shopId" => $shop_id));
     }
 
+    /** 获取店铺内修改受限制的商品，包含两类商品：有锁的商品和有pid关系的商品。这两种商品信息修改受到限制。
+     * @param $shop_id 店铺id
+     * @return mixed
+     */
+    public function get_shop_limited_items_v2($shop_id)
+    {
+        return $this->client->call("eleme.product.item.getShopLimitedItemsV2", array("shopId" => $shop_id));
+    }
+
     /** 测试专用，获取测试店铺id数据
     
      * @return mixed

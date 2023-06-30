@@ -124,7 +124,7 @@ class FinanceService extends RpcService
         return $this->client->call("eleme.finance.querySlaveShopIdsByChainId", array("chainId" => $chain_id, "checkoutDate" => $checkout_date));
     }
 
-    /** 批量查询分店商品维度账单数据
+    /** 批量查询分店商品维度的账单数据
      * @param $settle_account_shop_id 结算入账ID
      * @param $shop_id_list 门店id列表（限制100）
      * @param $query 查询条件
@@ -133,6 +133,33 @@ class FinanceService extends RpcService
     public function query_goods_orders($settle_account_shop_id, $shop_id_list, $query)
     {
         return $this->client->call("eleme.finance.queryGoodsOrders", array("settleAccountShopId" => $settle_account_shop_id, "shopIdList" => $shop_id_list, "query" => $query));
+    }
+
+    /** 分页查询总店通兑卡账单
+     * @param $page_query 总店账单分页查询条件
+     * @return mixed
+     */
+    public function query_head_shop_generic_card_bills($page_query)
+    {
+        return $this->client->call("eleme.finance.queryHeadShopGenericCardBills", array("pageQuery" => $page_query));
+    }
+
+    /** 分页查询分店通兑卡账单列表
+     * @param $page_query 分页查询条件
+     * @return mixed
+     */
+    public function query_branch_shop_generic_card_bills($page_query)
+    {
+        return $this->client->call("eleme.finance.queryBranchShopGenericCardBills", array("pageQuery" => $page_query));
+    }
+
+    /** 查询外卖订单通兑卡账单信息
+     * @param $order_bill_query 外卖订单查询条件
+     * @return mixed
+     */
+    public function query_generic_card_bill_by_order($order_bill_query)
+    {
+        return $this->client->call("eleme.finance.queryGenericCardBillByOrder", array("orderBillQuery" => $order_bill_query));
     }
 
 }
