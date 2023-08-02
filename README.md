@@ -118,6 +118,15 @@
 
 ## CHANGELOG:
 
+### [1.80.0]
+
+    Release Date : 2023-08-02
+
+- [Feature] 更新了商品服务
+- [Feature] 新增了店铺分服务
+- [Feature] 更新了商户服务
+
+
 ### [1.79.0]
 
     Release Date : 2023-06-30

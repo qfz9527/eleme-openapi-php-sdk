@@ -1100,6 +1100,24 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.renovate.agreeShopCommodityDiagnosisProblem", array("request" => $request));
     }
 
+    /** 查询单店铺商品诊断数据 新版
+     * @param $shop_id 店铺ID
+     * @return mixed
+     */
+    public function get_shop_commodity_diagnosis_data_v2($shop_id)
+    {
+        return $this->client->call("eleme.product.renovate.getShopCommodityDiagnosisDataV2", array("shopId" => $shop_id));
+    }
+
+    /** 一键 & 批量商品老_i_d优化店铺问题商品详情信息新版
+     * @param $request 请求
+     * @return mixed
+     */
+    public function agree_shop_commodity_diagnosis_problem_v2($request)
+    {
+        return $this->client->call("eleme.product.renovate.agreeShopCommodityDiagnosisProblemV2", array("request" => $request));
+    }
+
     /** 查询连锁总店商品信息
      * @param $iid 连锁总店商品Id
      * @return mixed
@@ -1213,6 +1231,36 @@ class ProductService extends RpcService
     public function delete_sku($p_id)
     {
         return $this->client->call("eleme.product.chain.item.deleteSku", array("pId" => $p_id));
+    }
+
+    /** 根据商品ext_code批量查询商品详情
+     * @param $shop_id 店铺Id
+     * @param $item_ext_codes 商品extCode列表，长度最大100
+     * @return mixed
+     */
+    public function get_items_by_ext_code($shop_id, $item_ext_codes)
+    {
+        return $this->client->call("eleme.product.itemV2.getItemsByExtCode", array("shopId" => $shop_id, "itemExtCodes" => $item_ext_codes));
+    }
+
+    /** 根据规格ext_code批量修改库存详细信息
+     * @param $shop_id 店铺Id
+     * @param $update_stock_requests 更新规格请求列表，最大长度200
+     * @return mixed
+     */
+    public function batch_update_stock_detail_by_ext_code($shop_id, $update_stock_requests)
+    {
+        return $this->client->call("eleme.product.itemV2.batchUpdateStockDetailByExtCode", array("shopId" => $shop_id, "updateStockRequests" => $update_stock_requests));
+    }
+
+    /** 根据商品ext_code批量修改商品售卖状态
+     * @param $shop_id 店铺Id
+     * @param $update_sale_status_requests 更新规格请求列表，最大长度30
+     * @return mixed
+     */
+    public function batch_update_sale_status_by_ext_code($shop_id, $update_sale_status_requests)
+    {
+        return $this->client->call("eleme.product.itemV2.batchUpdateSaleStatusByExtCode", array("shopId" => $shop_id, "updateSaleStatusRequests" => $update_sale_status_requests));
     }
 
     /** 发布一个品牌标品

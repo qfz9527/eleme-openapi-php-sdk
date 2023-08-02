@@ -26,4 +26,13 @@ class UserService extends RpcService
         return $this->client->call("eleme.user.getPhoneNumber", array());
     }
 
+    /** 获取授权token状态
+     * @param $token 授权token
+     * @return mixed
+     */
+    public function get_token_status($token)
+    {
+        return $this->client->call("eleme.user.getTokenStatus", array("token" => $token));
+    }
+
 }
