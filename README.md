@@ -118,6 +118,16 @@
 
 ## CHANGELOG:
 
+### [1.81.0]
+
+    Release Date : 2023-09-07
+
+- [Feature] 更新了活动服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了新消息服务
+- [Feature] 更新了商品服务
+
+
 ### [1.80.0]
 
     Release Date : 2023-08-02

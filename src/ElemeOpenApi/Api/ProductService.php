@@ -1306,6 +1306,16 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.spu.querySpuByPage", array("queryPage" => $query_page));
     }
 
+    /** 根据spu_out_code获取spu信息
+     * @param $shop_id 店铺id
+     * @param $spu_out_code spuOutCode
+     * @return mixed
+     */
+    public function get_spu_by_spu_out_code($shop_id, $spu_out_code)
+    {
+        return $this->client->call("eleme.product.spu.getSpuBySpuOutCode", array("shopId" => $shop_id, "spuOutCode" => $spu_out_code));
+    }
+
     /** 上传图片，返回图片的hash值
      * @param $image 文件内容base64编码值
      * @return mixed
@@ -1373,7 +1383,7 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.menu.syncMenu", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code, "syncShopSpus" => $sync_shop_spus));
     }
 
-    /** 获取同步任务详情
+    /** 获取同步主任务信息
      * @param $shop_id 店铺id
      * @param $task_id 任务id
      * @return mixed
@@ -1381,6 +1391,16 @@ class ProductService extends RpcService
     public function get_sync_task($shop_id, $task_id)
     {
         return $this->client->call("eleme.product.menu.getSyncTask", array("shopId" => $shop_id, "taskId" => $task_id));
+    }
+
+    /** 批量查询同步子任务信息
+     * @param $shop_id 店铺id
+     * @param $sub_task_ids 任务id
+     * @return mixed
+     */
+    public function get_sync_sub_tasks($shop_id, $sub_task_ids)
+    {
+        return $this->client->call("eleme.product.menu.getSyncSubTasks", array("shopId" => $shop_id, "subTaskIds" => $sub_task_ids));
     }
 
 }
