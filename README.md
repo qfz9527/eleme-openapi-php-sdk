@@ -118,6 +118,17 @@
 
 ## CHANGELOG:
 
+### [1.82.0]
+
+    Release Date : 2023-09-26
+
+- [Feature] 更新了活动服务
+- [Feature] 新增了开放平台用户信息查询服务
+- [Feature] 新增了订单服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了开店服务
+
+
 ### [1.81.0]
 
     Release Date : 2023-09-07

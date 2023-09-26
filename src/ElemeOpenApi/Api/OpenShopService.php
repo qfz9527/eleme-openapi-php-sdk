@@ -80,4 +80,13 @@ class OpenShopService extends RpcService
         return $this->client->call("eleme.openShop.getDetailByApplyId", array("request" => $request));
     }
 
+    /** 创建开店申请
+     * @param $request 请求参数
+     * @return mixed
+     */
+    public function create($request)
+    {
+        return $this->client->call("eleme.openShop.create", array("request" => $request));
+    }
+
 }
