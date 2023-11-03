@@ -162,4 +162,22 @@ class FinanceService extends RpcService
         return $this->client->call("eleme.finance.queryGenericCardBillByOrder", array("orderBillQuery" => $order_bill_query));
     }
 
+    /** 分页查询店铺返佣账单信息
+     * @param $page_query 分页查询返佣账单条件
+     * @return mixed
+     */
+    public function query_chain_shop_reward_bill($page_query)
+    {
+        return $this->client->call("eleme.finance.queryChainShopRewardBill", array("pageQuery" => $page_query));
+    }
+
+    /** 查询外卖订单的返佣账单信息
+     * @param $query 分页查询返佣账单条件
+     * @return mixed
+     */
+    public function query_reward_bill_by_order($query)
+    {
+        return $this->client->call("eleme.finance.queryRewardBillByOrder", array("query" => $query));
+    }
+
 }

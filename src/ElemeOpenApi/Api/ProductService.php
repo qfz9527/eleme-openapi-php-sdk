@@ -1073,6 +1073,15 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.getTestShopIds", array());
     }
 
+    /** 批量查询店铺商品的连锁店_p_id和锁信息
+     * @param $item_ids 商品Id列表，数量不超过100
+     * @return mixed
+     */
+    public function batch_get_pid_and_locks($item_ids)
+    {
+        return $this->client->call("eleme.product.item.batchGetPidAndLocks", array("itemIds" => $item_ids));
+    }
+
     /** 抖音审核回调
      * @param $request 回调请求参数
      * @return mixed

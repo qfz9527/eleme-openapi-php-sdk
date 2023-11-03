@@ -118,6 +118,14 @@
 
 ## CHANGELOG:
 
+### [1.83.0]
+
+    Release Date : 2023-11-03
+
+- [Feature] 更新了金融服务
+- [Feature] 更新了商品服务
+
+
 ### [1.82.0]
 
     Release Date : 2023-09-26
