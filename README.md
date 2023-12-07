@@ -118,6 +118,16 @@
 
 ## CHANGELOG:
 
+### [1.84.0]
+
+    Release Date : 2023-12-07
+
+- [Feature] 更新了活动服务
+- [Feature] 新增了生意参谋服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了订单服务
+
+
 ### [1.83.0]
 
     Release Date : 2023-11-03

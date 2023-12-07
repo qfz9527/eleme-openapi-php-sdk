@@ -130,15 +130,6 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.getCommodities", array("orderId" => $order_id));
     }
 
-    /** 批量获取订单菜品活动价格
-     * @param $order_ids 订单Id列表
-     * @return mixed
-     */
-    public function mget_commodities($order_ids)
-    {
-        return $this->client->call("eleme.order.mgetCommodities", array("orderIds" => $order_ids));
-    }
-
     /** 获取订单退款信息
      * @param $order_id 订单Id
      * @return mixed
@@ -268,24 +259,6 @@ class OrderService extends RpcService
     public function evaluate_rider($order_id, $evaluation_info)
     {
         return $this->client->call("eleme.order.evaluateRider", array("orderId" => $order_id, "evaluationInfo" => $evaluation_info));
-    }
-
-    /** 批量获取骑手评价信息
-     * @param $order_ids 订单Id的列表
-     * @return mixed
-     */
-    public function mget_evaluation_infos($order_ids)
-    {
-        return $this->client->call("eleme.order.mgetEvaluationInfos", array("orderIds" => $order_ids));
-    }
-
-    /** 批量获取是否可以评价骑手
-     * @param $order_ids 订单Id的列表
-     * @return mixed
-     */
-    public function mget_evaluation_status($order_ids)
-    {
-        return $this->client->call("eleme.order.mgetEvaluationStatus", array("orderIds" => $order_ids));
     }
 
     /** 批量获取订单加小费信息
