@@ -118,6 +118,13 @@
 
 ## CHANGELOG:
 
+### [1.85.0]
+
+    Release Date : 2024-03-01
+
+- [Feature] 新增了斗金服务
+
+
 ### [1.84.0]
 
     Release Date : 2023-12-07
