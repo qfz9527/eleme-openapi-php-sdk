@@ -35,4 +35,31 @@ class UserService extends RpcService
         return $this->client->call("eleme.user.getTokenStatus", array("token" => $token));
     }
 
+    /** 批量解除令牌授权
+     * @param $auth_operate_req 查询条件
+     * @return mixed
+     */
+    public function auth_del_operate($auth_operate_req)
+    {
+        return $this->client->call("eleme.user.authDelOperate", array("authOperateReq" => $auth_operate_req));
+    }
+
+    /** 批量恢复令牌授权
+     * @param $auth_operate_req 查询条件
+     * @return mixed
+     */
+    public function auth_recover_operate($auth_operate_req)
+    {
+        return $this->client->call("eleme.user.authRecoverOperate", array("authOperateReq" => $auth_operate_req));
+    }
+
+    /** 获取新用户_i_d(open_user_id)
+     * @param $user_id userId或者userIdStr均可
+     * @return mixed
+     */
+    public function get_open_user_id_by_user_id($user_id)
+    {
+        return $this->client->call("eleme.user.getOpenUserIdByUserId", array("userId" => $user_id));
+    }
+
 }

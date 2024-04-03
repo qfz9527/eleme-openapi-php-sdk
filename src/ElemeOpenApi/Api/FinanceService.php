@@ -180,4 +180,58 @@ class FinanceService extends RpcService
         return $this->client->call("eleme.finance.queryRewardBillByOrder", array("query" => $query));
     }
 
+    /** 分页查询总店推广账单
+     * @param $page_query 总店账单分页查询条件
+     * @return mixed
+     */
+    public function page_query_chain_shop_promotion_bill($page_query)
+    {
+        return $this->client->call("eleme.finance.pageQueryChainShopPromotionBill", array("pageQuery" => $page_query));
+    }
+
+    /** 分页查询单店推广账单
+     * @param $branch_shop_bill_page_query 分页账单查询条件
+     * @return mixed
+     */
+    public function page_query_branch_shop_promotion_bill($branch_shop_bill_page_query)
+    {
+        return $this->client->call("eleme.finance.pageQueryBranchShopPromotionBill", array("branchShopBillPageQuery" => $branch_shop_bill_page_query));
+    }
+
+    /** 查询外卖订单推广账单
+     * @param $order_bill_query 外卖订单查询条件
+     * @return mixed
+     */
+    public function query_promotion_bills_by_order($order_bill_query)
+    {
+        return $this->client->call("eleme.finance.queryPromotionBillsByOrder", array("orderBillQuery" => $order_bill_query));
+    }
+
+    /** 分页查询总店保险账单
+     * @param $page_query 总店账单分页查询条件
+     * @return mixed
+     */
+    public function page_query_chain_shop_insurance_bills($page_query)
+    {
+        return $this->client->call("eleme.finance.pageQueryChainShopInsuranceBills", array("pageQuery" => $page_query));
+    }
+
+    /** 分页查询单店保险账单
+     * @param $page_query 分页查询条件
+     * @return mixed
+     */
+    public function page_query_branch_shop_insurance_bills($page_query)
+    {
+        return $this->client->call("eleme.finance.pageQueryBranchShopInsuranceBills", array("pageQuery" => $page_query));
+    }
+
+    /** 查询外卖订单保险账单
+     * @param $order_bill_query 外卖订单查询条件
+     * @return mixed
+     */
+    public function query_insurance_bills_by_order($order_bill_query)
+    {
+        return $this->client->call("eleme.finance.queryInsuranceBillsByOrder", array("orderBillQuery" => $order_bill_query));
+    }
+
 }

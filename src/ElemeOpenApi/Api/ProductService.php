@@ -8,6 +8,58 @@ namespace ElemeOpenApi\Api;
 class ProductService extends RpcService
 {
 
+    /** 发布品牌菜单v2
+     * @param $shop_id 店铺id
+     * @param $menu 品牌菜单信息
+     * @return mixed
+     */
+    public function publish_menu_v2($shop_id, $menu)
+    {
+        return $this->client->call("eleme.product.spuMenuV2.publishMenuV2", array("shopId" => $shop_id, "menu" => $menu));
+    }
+
+    /** 获取菜单信息v2
+     * @param $shop_id 店铺id
+     * @param $menu_out_code 菜单outCode
+     * @return mixed
+     */
+    public function get_menu_v2($shop_id, $menu_out_code)
+    {
+        return $this->client->call("eleme.product.spuMenuV2.getMenuV2", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code));
+    }
+
+    /** 同步全量菜单标品到子门店v2
+     * @param $shop_id 店铺id
+     * @param $menu_out_code 菜单outCode
+     * @param $override_sync_shop_spu 同步门店菜单
+     * @return mixed
+     */
+    public function sync_menu_v2($shop_id, $menu_out_code, $override_sync_shop_spu)
+    {
+        return $this->client->call("eleme.product.spuMenuV2.syncMenuV2", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code, "overrideSyncShopSpu" => $override_sync_shop_spu));
+    }
+
+    /** 同步部分菜单标品到子门店v2
+     * @param $shop_id 店铺id
+     * @param $menu_out_code 菜单outCode
+     * @param $partial_sync_shop_spu 同步门店菜单
+     * @return mixed
+     */
+    public function sync_partial_menu_v2($shop_id, $menu_out_code, $partial_sync_shop_spu)
+    {
+        return $this->client->call("eleme.product.spuMenuV2.syncPartialMenuV2", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code, "partialSyncShopSpu" => $partial_sync_shop_spu));
+    }
+
+    /** 获取同步菜单任务v2
+     * @param $shop_id 店铺id
+     * @param $task_ids 任务id列表
+     * @return mixed
+     */
+    public function batch_get_sync_tasks_v2($shop_id, $task_ids)
+    {
+        return $this->client->call("eleme.product.spuMenuV2.batchGetSyncTasksV2", array("shopId" => $shop_id, "taskIds" => $task_ids));
+    }
+
     /** 查询连锁总店菜单及分组信息
      * @param $mid 菜单Id
      * @return mixed
@@ -269,6 +321,18 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.category.createCategory", array("shopId" => $shop_id, "name" => $name, "description" => $description));
     }
 
+    /** 添加商品分类v2
+     * @param $shop_id 店铺Id
+     * @param $name 商品分类名称，长度需在50字以内
+     * @param $description 商品分类描述，长度需在50字以内
+     * @param $ext_code 商品分类外部编号
+     * @return mixed
+     */
+    public function create_category_v2($shop_id, $name, $description, $ext_code)
+    {
+        return $this->client->call("eleme.product.category.createCategoryV2", array("shopId" => $shop_id, "name" => $name, "description" => $description, "extCode" => $ext_code));
+    }
+
     /** 添加商品分类，支持二级分类
      * @param $shop_id 店铺Id
      * @param $name 商品分类名称，长度需在50字以内
@@ -290,6 +354,18 @@ class ProductService extends RpcService
     public function update_category($category_id, $name, $description)
     {
         return $this->client->call("eleme.product.category.updateCategory", array("categoryId" => $category_id, "name" => $name, "description" => $description));
+    }
+
+    /** 更新商品分类v2
+     * @param $category_id 商品分类Id
+     * @param $name 商品分类名称，长度需在50字以内
+     * @param $description 商品分类描述，长度需在50字以内
+     * @param $ext_code 商品分类外部编号
+     * @return mixed
+     */
+    public function update_category_v2($category_id, $name, $description, $ext_code)
+    {
+        return $this->client->call("eleme.product.category.updateCategoryV2", array("categoryId" => $category_id, "name" => $name, "description" => $description, "extCode" => $ext_code));
     }
 
     /** 更新商品分类，包含二级分类
@@ -627,6 +703,15 @@ class ProductService extends RpcService
     public function batch_remove_items($item_ids)
     {
         return $this->client->call("eleme.product.item.batchRemoveItems", array("itemIds" => $item_ids));
+    }
+
+    /** 批量删除商品_v2
+     * @param $item_ids 商品Id的列表
+     * @return mixed
+     */
+    public function batch_remove_items_v2($item_ids)
+    {
+        return $this->client->call("eleme.product.item.batchRemoveItemsV2", array("itemIds" => $item_ids));
     }
 
     /** 批量更新商品库存
@@ -1082,6 +1167,16 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.batchGetPidAndLocks", array("itemIds" => $item_ids));
     }
 
+    /** 批量获取店铺能否支持某能力
+     * @param $shop_ids 店铺ID列表，数量不超过100
+     * @param $support_code 支持的能力Code
+     * @return mixed
+     */
+    public function batch_get_shop_can_support_ability($shop_ids, $support_code)
+    {
+        return $this->client->call("eleme.product.item.batchGetShopCanSupportAbility", array("shopIds" => $shop_ids, "supportCode" => $support_code));
+    }
+
     /** 抖音审核回调
      * @param $request 回调请求参数
      * @return mixed
@@ -1262,6 +1357,16 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.itemV2.batchUpdateStockDetailByExtCode", array("shopId" => $shop_id, "updateStockRequests" => $update_stock_requests));
     }
 
+    /** 根据规格ext_code批量修改库存值
+     * @param $shop_id 店铺Id
+     * @param $update_stock_requests 更新规格请求列表，最大长度200
+     * @return mixed
+     */
+    public function batch_update_stock_by_ext_code($shop_id, $update_stock_requests)
+    {
+        return $this->client->call("eleme.product.itemV2.batchUpdateStockByExtCode", array("shopId" => $shop_id, "updateStockRequests" => $update_stock_requests));
+    }
+
     /** 根据商品ext_code批量修改商品售卖状态
      * @param $shop_id 店铺Id
      * @param $update_sale_status_requests 更新规格请求列表，最大长度30
@@ -1270,6 +1375,16 @@ class ProductService extends RpcService
     public function batch_update_sale_status_by_ext_code($shop_id, $update_sale_status_requests)
     {
         return $this->client->call("eleme.product.itemV2.batchUpdateSaleStatusByExtCode", array("shopId" => $shop_id, "updateSaleStatusRequests" => $update_sale_status_requests));
+    }
+
+    /** 根据商品ext_code批量修改商品售卖属性状态
+     * @param $shop_id 店铺Id
+     * @param $update_attribute_sale_status_requests 更新商品售卖属性请求列表，最大长度30
+     * @return mixed
+     */
+    public function batch_update_attribute_sale_status_by_ext_code($shop_id, $update_attribute_sale_status_requests)
+    {
+        return $this->client->call("eleme.product.itemV2.batchUpdateAttributeSaleStatusByExtCode", array("shopId" => $shop_id, "updateAttributeSaleStatusRequests" => $update_attribute_sale_status_requests));
     }
 
     /** 发布一个品牌标品
@@ -1323,6 +1438,45 @@ class ProductService extends RpcService
     public function get_spu_by_spu_out_code($shop_id, $spu_out_code)
     {
         return $this->client->call("eleme.product.spu.getSpuBySpuOutCode", array("shopId" => $shop_id, "spuOutCode" => $spu_out_code));
+    }
+
+    /** 发布一个品牌标品v2
+     * @param $shop_id 店铺id
+     * @param $spu 品牌标品
+     * @return mixed
+     */
+    public function publish_spu_v2($shop_id, $spu)
+    {
+        return $this->client->call("eleme.product.spuV2.publishSpuV2", array("shopId" => $shop_id, "spu" => $spu));
+    }
+
+    /** 删除一个品牌标品v2
+     * @param $shop_id 店铺id
+     * @param $spu_out_code spuOutCode
+     * @return mixed
+     */
+    public function delete_spu_v2($shop_id, $spu_out_code)
+    {
+        return $this->client->call("eleme.product.spuV2.deleteSpuV2", array("shopId" => $shop_id, "spuOutCode" => $spu_out_code));
+    }
+
+    /** 分页获取店铺下的_s_p_uv2
+     * @param $query_page 分页查询参数
+     * @return mixed
+     */
+    public function query_spu_by_page_v2($query_page)
+    {
+        return $this->client->call("eleme.product.spuV2.querySpuByPageV2", array("queryPage" => $query_page));
+    }
+
+    /** 根据spu_out_code获取spu信息v2
+     * @param $shop_id 店铺id
+     * @param $spu_out_code spuOutCode
+     * @return mixed
+     */
+    public function get_spu_by_spu_out_code_v2($shop_id, $spu_out_code)
+    {
+        return $this->client->call("eleme.product.spuV2.getSpuBySpuOutCodeV2", array("shopId" => $shop_id, "spuOutCode" => $spu_out_code));
     }
 
     /** 上传图片，返回图片的hash值
@@ -1410,6 +1564,17 @@ class ProductService extends RpcService
     public function get_sync_sub_tasks($shop_id, $sub_task_ids)
     {
         return $this->client->call("eleme.product.menu.getSyncSubTasks", array("shopId" => $shop_id, "subTaskIds" => $sub_task_ids));
+    }
+
+    /** 覆盖菜单同步预校验
+     * @param $shop_id 店铺id
+     * @param $menu_out_code 菜单模板outCode
+     * @param $sync_shop_spus 同步店铺id列表
+     * @return mixed
+     */
+    public function sync_menu_pre_check($shop_id, $menu_out_code, $sync_shop_spus)
+    {
+        return $this->client->call("eleme.product.menu.syncMenuPreCheck", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code, "syncShopSpus" => $sync_shop_spus));
     }
 
 }

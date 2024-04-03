@@ -170,13 +170,22 @@ class ActivityService extends RpcService
         return $this->client->call("eleme.activity.coupon.presentCommonTargetCoupons", array("chainId" => $chain_id, "targetList" => $target_list, "targetListType" => $target_list_type, "commonTargetCouponDetail" => $common_target_coupon_detail));
     }
 
-    /** 分页查询店铺的定向赠红包信息
+    /** 分页查询店铺的定向赠红包信息(接口不在新接入，返回的是user_id，不返回open_user_id)
      * @param $target_coupon_query_request 定向赠红包查询入参对象
      * @return mixed
      */
     public function query_target_coupon_info($target_coupon_query_request)
     {
         return $this->client->call("eleme.activity.coupon.queryTargetCouponInfo", array("targetCouponQueryRequest" => $target_coupon_query_request));
+    }
+
+    /** 分页查询店铺的定向赠红包信息(新接入需要使用此接口，返回的是加密的open_user_id，user_id不返回)
+     * @param $target_coupon_query_request 定向赠红包查询入参对象
+     * @return mixed
+     */
+    public function query_target_coupon_info_v2($target_coupon_query_request)
+    {
+        return $this->client->call("eleme.activity.coupon.queryTargetCouponInfoV2", array("targetCouponQueryRequest" => $target_coupon_query_request));
     }
 
     /** 定向赠通用商品券

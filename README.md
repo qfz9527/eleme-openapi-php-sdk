@@ -118,6 +118,22 @@
 
 ## CHANGELOG:
 
+### [1.86.0]
+
+    Release Date : 2024-04-03
+
+- [Feature] 更新了活动服务
+- [Feature] 新增了渠道管理服务
+- [Feature] 新增了生活钉接口
+- [Feature] 更新了金融服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了订单服务
+- [Feature] 更新了商品服务
+- [Feature] 更新了店铺服务
+- [Feature] 更新了订单评论服务
+- [Feature] 更新了商户服务
+
+
 ### [1.85.0]
 
     Release Date : 2024-03-01
