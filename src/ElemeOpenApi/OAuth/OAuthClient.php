@@ -8,6 +8,7 @@ use Exception;
 
 class OAuthClient
 {
+    private $config;
     private $client_id;
     private $secret;
     private $token_url;

@@ -1,5 +1,5 @@
 {
-  "name": "eleme-openapi/eleme-openapi-sdk",
+  "name": "qfz9527/eleme-openapi-sdk",
   "description": "eleme-openapi-php-sdk",
   "license": "MIT",
   "keywords": [
@@ -13,7 +13,7 @@
     }
   ],
   "require": {
-      "php": ">=5.4.0"
+      "php": ">=8.2.0"
   },
   "autoload": {
     "psr-4": {
