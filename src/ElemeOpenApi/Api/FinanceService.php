@@ -234,4 +234,33 @@ class FinanceService extends RpcService
         return $this->client->call("eleme.finance.queryInsuranceBillsByOrder", array("orderBillQuery" => $order_bill_query));
     }
 
+    /** 分页查询总店代运营账单
+     * @param $page_query 总店账单分页查询条件
+     * @return mixed
+     */
+    public function page_query_chain_shop_agent_commission_bills($page_query)
+    {
+        return $this->client->call("eleme.finance.pageQueryChainShopAgentCommissionBills", array("pageQuery" => $page_query));
+    }
+
+    /** 分页查询单店代运营账单
+     * @param $page_query 分页查询条件
+     * @return mixed
+     */
+    public function page_query_branch_shop_agent_commission_bills($page_query)
+    {
+        return $this->client->call("eleme.finance.pageQueryBranchShopAgentCommissionBills", array("pageQuery" => $page_query));
+    }
+
+    /** 查询外卖订单代运营账单
+     根据订单_i_d查询
+     一笔订单可能有多个代运营账单，存在正常单和退单
+     * @param $order_bill_query 外卖订单查询条件
+     * @return mixed
+     */
+    public function query_agent_commission_bills_by_order($order_bill_query)
+    {
+        return $this->client->call("eleme.finance.queryAgentCommissionBillsByOrder", array("orderBillQuery" => $order_bill_query));
+    }
+
 }

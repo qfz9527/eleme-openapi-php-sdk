@@ -278,6 +278,42 @@ class ActivityService extends RpcService
         return $this->client->call("eleme.activity.coupon.presentCouponWithTemplateIdV2", array("presentWithTemplateModel" => $present_with_template_model));
     }
 
+    /** 批量创建商品活动
+     * @param $request 批量创建活动请求参数
+     * @return mixed
+     */
+    public function batch_create($request)
+    {
+        return $this->client->call("eleme.activity.play.batchCreate", array("request" => $request));
+    }
+
+    /** 批量更新商品活动
+     * @param $request 批量更新活动参数
+     * @return mixed
+     */
+    public function batch_update($request)
+    {
+        return $this->client->call("eleme.activity.play.batchUpdate", array("request" => $request));
+    }
+
+    /** 批量下线商品活动
+     * @param $request 批量下线活动
+     * @return mixed
+     */
+    public function batch_offline($request)
+    {
+        return $this->client->call("eleme.activity.play.batchOffline", array("request" => $request));
+    }
+
+    /** 批量查询商品活动列表
+     * @param $request 批量查询活动列表
+     * @return mixed
+     */
+    public function batch_search($request)
+    {
+        return $this->client->call("eleme.activity.play.batchSearch", array("request" => $request));
+    }
+
     /** 查询订单内营销相关数据
      * @param $order_id 饿了么订单Id
      * @return mixed
@@ -285,6 +321,69 @@ class ActivityService extends RpcService
     public function query_order_subsidy($order_id)
     {
         return $this->client->call("eleme.activity.marketing.queryOrderSubsidy", array("orderId" => $order_id));
+    }
+
+    /** 抖音创建招商活动后调用，创建e侧抖音频道
+     * @param $request 创建e侧抖音频道
+     * @return mixed
+     */
+    public function create_campaign_dy_channel($request)
+    {
+        return $this->client->call("eleme.activity.dy.createCampaignDyChannel", array("request" => $request));
+    }
+
+    /** 抖音审核状态回调
+     * @param $request 抖音审核状态回调
+     * @return mixed
+     */
+    public function audit_status_call_back($request)
+    {
+        return $this->client->call("eleme.activity.dy.auditStatusCallBack", array("request" => $request));
+    }
+
+    /** 抖音查询e侧报名单状态，用于核对状态一致性
+     * @param $request 查询e侧报名单状态
+     * @return mixed
+     */
+    public function query_ele_apply_status($request)
+    {
+        return $this->client->call("eleme.activity.dy.queryEleApplyStatus", array("request" => $request));
+    }
+
+    /** 抖音侧商品退出报名时调用，e侧商品退出报名
+     * @param $request 商品退出报名
+     * @return mixed
+     */
+    public function offline_sku_apply($request)
+    {
+        return $this->client->call("eleme.activity.dy.offlineSkuApply", array("request" => $request));
+    }
+
+    /** 抖音侧创建券活动时调用
+     * @param $request 抖音创建券活动
+     * @return mixed
+     */
+    public function create_coupon_activity($request)
+    {
+        return $this->client->call("eleme.activity.dy.createCouponActivity", array("request" => $request));
+    }
+
+    /** 抖音侧修改券活动时调用
+     * @param $request 抖音创建券活动
+     * @return mixed
+     */
+    public function modify_coupon_activity($request)
+    {
+        return $this->client->call("eleme.activity.dy.modifyCouponActivity", array("request" => $request));
+    }
+
+    /** 根据dy券活动id查询券活动信息
+     * @param $request 抖音查询券活动信息
+     * @return mixed
+     */
+    public function query_dy_coupon_activity($request)
+    {
+        return $this->client->call("eleme.activity.dy.queryDyCouponActivity", array("request" => $request));
     }
 
     /** 创建并绑定连锁店特价活动

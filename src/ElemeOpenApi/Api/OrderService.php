@@ -302,7 +302,7 @@ class OrderService extends RpcService
         return $this->client->call("eleme.order.shopPayApplyRefund", array("orderId" => $order_id, "type" => $type, "remark" => $remark));
     }
 
-    /** 非自配送餐厅标记已出餐
+    /** 商家确认已完成出餐
      * @param $order_id 订单Id
      * @return mixed
      */
@@ -472,6 +472,24 @@ class OrderService extends RpcService
     public function batch_get_order_address($order_ids)
     {
         return $this->client->call("eleme.order.batchGetOrderAddress", array("orderIds" => $order_ids));
+    }
+
+    /** 查询订单退款商品明细
+     * @param $order_id 订单Id
+     * @return mixed
+     */
+    public function query_refund_food_infos($order_id)
+    {
+        return $this->client->call("eleme.order.queryRefundFoodInfos", array("orderId" => $order_id));
+    }
+
+    /** 查询自配送店铺送达准时率信息
+     * @param $shop_id 店铺Id
+     * @return mixed
+     */
+    public function query_self_delivery_on_time_rate($shop_id)
+    {
+        return $this->client->call("eleme.order.querySelfDeliveryOnTimeRate", array("shopId" => $shop_id));
     }
 
 }

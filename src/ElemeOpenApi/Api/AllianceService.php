@@ -44,4 +44,13 @@ class AllianceService extends RpcService
         return $this->client->call("eleme.alliance.queryOrderInfo", array("channelOrderQueryRequest" => $channel_order_query_request));
     }
 
+    /** 查询机构账单
+     * @param $query_institution_bill_request 机构账单查询
+     * @return mixed
+     */
+    public function query_institution_bill($query_institution_bill_request)
+    {
+        return $this->client->call("eleme.alliance.queryInstitutionBill", array("queryInstitutionBillRequest" => $query_institution_bill_request));
+    }
+
 }

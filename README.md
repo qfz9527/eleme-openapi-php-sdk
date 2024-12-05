@@ -118,6 +118,26 @@
 
 ## CHANGELOG:
 
+### [1.87.0]
+
+    Release Date : 2024-12-05
+
+- [Feature] 更新了活动服务
+- [Feature] 更新了斗金服务
+- [Feature] 更新了渠道管理服务
+- [Feature] 新增了品牌建店服务
+- [Feature] 新增了CRM会员开放平台-权益服务
+- [Feature] 更新了金融服务
+- [Feature] 更新了开票服务
+- [Feature] 更新了消息服务
+- [Feature] 更新了新消息服务
+- [Feature] 更新了订单服务
+- [Feature] 新增了拼团服务
+- [Feature] 更新了商品服务
+- [Feature] 更新了店铺服务
+- [Feature] 更新了订单评论服务
+
+
 ### [1.86.0]
 
     Release Date : 2024-04-03

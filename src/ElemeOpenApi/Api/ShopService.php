@@ -70,11 +70,34 @@ class ShopService extends RpcService
      * @param $shop_id 店铺Id
      * @param $delivery_basic_mins 配送基准时间(单位分钟)
      * @param $delivery_adjust_mins 配送调整时间(单位分钟)
+     * @param $special_delivery_time 特殊时段配送时间(单位分钟)
+     * @param $distance_plus_time 3km以上每km增加的时间(单位分钟)
      * @return mixed
      */
-    public function set_delivery_time($shop_id, $delivery_basic_mins, $delivery_adjust_mins)
+    public function set_delivery_time($shop_id, $delivery_basic_mins, $delivery_adjust_mins, $special_delivery_time, $distance_plus_time)
     {
-        return $this->client->call("eleme.shop.setDeliveryTime", array("shopId" => $shop_id, "deliveryBasicMins" => $delivery_basic_mins, "deliveryAdjustMins" => $delivery_adjust_mins));
+        return $this->client->call("eleme.shop.setDeliveryTime", array("shopId" => $shop_id, "deliveryBasicMins" => $delivery_basic_mins, "deliveryAdjustMins" => $delivery_adjust_mins, "specialDeliveryTime" => $special_delivery_time, "distancePlusTime" => $distance_plus_time));
+    }
+
+    /** 自配送商家设置送达时间
+     * @param $shop_id 店铺Id
+     * @param $delivery_time 配送总时间(单位:分钟)
+     * @param $special_delivery_time  特殊时段配送时间(单位分钟)
+     * @param $distance_plus_time 3km以上每km增加的时间(单位分钟)
+     * @return mixed
+     */
+    public function set_self_shop_delivery_time($shop_id, $delivery_time, $special_delivery_time, $distance_plus_time)
+    {
+        return $this->client->call("eleme.shop.setSelfShopDeliveryTime", array("shopId" => $shop_id, "deliveryTime" => $delivery_time, "specialDeliveryTime" => $special_delivery_time, "distancePlusTime" => $distance_plus_time));
+    }
+
+    /** 查询自配送推荐送达时间
+     * @param $shop_id 店铺Id
+     * @return mixed
+     */
+    public function get_recommend_delivery_time($shop_id)
+    {
+        return $this->client->call("eleme.shop.getRecommendDeliveryTime", array("shopId" => $shop_id));
     }
 
     /** 设置是否支持在线退单
@@ -149,11 +172,13 @@ class ShopService extends RpcService
     /** 设置店铺_t模型
      * @param $shop_id 店铺Id
      * @param $delivery_time 配送总时间(单位:分钟)
+     * @param $special_delivery_time  特殊时段配送时间(单位分钟)
+     * @param $distance_plus_time 3km以上每km增加的时间(单位分钟)
      * @return mixed
      */
-    public function set_shop_t_model($shop_id, $delivery_time)
+    public function set_shop_t_model($shop_id, $delivery_time, $special_delivery_time, $distance_plus_time)
     {
-        return $this->client->call("eleme.shop.setShopTModel", array("shopId" => $shop_id, "deliveryTime" => $delivery_time));
+        return $this->client->call("eleme.shop.setShopTModel", array("shopId" => $shop_id, "deliveryTime" => $delivery_time, "specialDeliveryTime" => $special_delivery_time, "distancePlusTime" => $distance_plus_time));
     }
 
     /** 设置店铺假期歇业
@@ -283,6 +308,42 @@ class ShopService extends RpcService
     public function set_video_status($video_device_d_t_o)
     {
         return $this->client->call("eleme.shop.video.setVideoStatus", array("videoDeviceDTO" => $video_device_d_t_o));
+    }
+
+    /** (仅电信用,现已废弃)根据统一社会信用代码查询在饿了么侧是否已开店
+     * @param $license_no 统一社会信用代码
+     * @return mixed
+     */
+    public function validate_shop_video_status($license_no)
+    {
+        return $this->client->call("eleme.shop.video.validateShopVideoStatus", array("licenseNo" => $license_no));
+    }
+
+    /** 根据统一社会信用代码查询在饿了么侧是否已开店
+     * @param $license_check_d_t_o 设备商及统一社会信用代码
+     * @return mixed
+     */
+    public function validate_shop_video_status_new($license_check_d_t_o)
+    {
+        return $this->client->call("eleme.shop.video.validateShopVideoStatusNew", array("licenseCheckDTO" => $license_check_d_t_o));
+    }
+
+    /** 第三方服务商同步设备信息
+     * @param $license_device_info 设备信息
+     * @return mixed
+     */
+    public function sync_shop_video_devices($license_device_info)
+    {
+        return $this->client->call("eleme.shop.video.syncShopVideoDevices", array("licenseDeviceInfo" => $license_device_info));
+    }
+
+    /** 第三方服务商同步_a_i识别结果
+     * @param $shop_ai_recognition AI识别结果
+     * @return mixed
+     */
+    public function sync_shop_ai_recognition_result($shop_ai_recognition)
+    {
+        return $this->client->call("eleme.shop.video.syncShopAiRecognitionResult", array("shopAiRecognition" => $shop_ai_recognition));
     }
 
 }

@@ -195,7 +195,7 @@ class UgcService extends RpcService
         return $this->client->call("eleme.ugc.replyRateByRateIdsAndShopId", array("rateIds" => $rate_ids, "shopId" => $shop_id, "replyType" => $reply_type, "reply" => $reply));
     }
 
-    /** 通过rate_ids和shop_id 批量回复指定类型的评论(推荐)
+    /** 通过rate_ids和shop_id 批量回复指定类型的评论(推荐)_v2
      * @param $rate_ids  评论编号
      * @param $shop_id  餐厅id
      * @param $reply_type 评论类型

@@ -18,6 +18,17 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.spuMenuV2.publishMenuV2", array("shopId" => $shop_id, "menu" => $menu));
     }
 
+    /** 发布品牌菜单分组v2
+     * @param $shop_id 店铺id
+     * @param $menu_out_code 菜单outCode
+     * @param $menu_group 品牌菜单分组信息
+     * @return mixed
+     */
+    public function publish_menu_group_v2($shop_id, $menu_out_code, $menu_group)
+    {
+        return $this->client->call("eleme.product.spuMenuV2.publishMenuGroupV2", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code, "menuGroup" => $menu_group));
+    }
+
     /** 获取菜单信息v2
      * @param $shop_id 店铺id
      * @param $menu_out_code 菜单outCode
@@ -48,6 +59,16 @@ class ProductService extends RpcService
     public function sync_partial_menu_v2($shop_id, $menu_out_code, $partial_sync_shop_spu)
     {
         return $this->client->call("eleme.product.spuMenuV2.syncPartialMenuV2", array("shopId" => $shop_id, "menuOutCode" => $menu_out_code, "partialSyncShopSpu" => $partial_sync_shop_spu));
+    }
+
+    /** 获取标品菜单同步任务结果v2
+     * @param $shop_id 店铺id
+     * @param $main_task_id 主任务id
+     * @return mixed
+     */
+    public function get_spu_menu_sync_task_result_v2($shop_id, $main_task_id)
+    {
+        return $this->client->call("eleme.product.spuMenuV2.getSpuMenuSyncTaskResultV2", array("shopId" => $shop_id, "mainTaskId" => $main_task_id));
     }
 
     /** 获取同步菜单任务v2
@@ -819,6 +840,15 @@ class ProductService extends RpcService
         return $this->client->call("eleme.product.item.queryItemByPage", array("queryPage" => $query_page));
     }
 
+    /** 分页获取店铺下的商品_v2
+     * @param $query_page 分页查询参数
+     * @return mixed
+     */
+    public function query_item_by_page_v2($query_page)
+    {
+        return $this->client->call("eleme.product.item.queryItemByPageV2", array("queryPage" => $query_page));
+    }
+
     /** 获取原材料树（即将下线）
      * @param $shop_id 店铺ID
      * @return mixed
@@ -1385,6 +1415,16 @@ class ProductService extends RpcService
     public function batch_update_attribute_sale_status_by_ext_code($shop_id, $update_attribute_sale_status_requests)
     {
         return $this->client->call("eleme.product.itemV2.batchUpdateAttributeSaleStatusByExtCode", array("shopId" => $shop_id, "updateAttributeSaleStatusRequests" => $update_attribute_sale_status_requests));
+    }
+
+    /** 根据商品ext_code批量修改商品售卖属性状态
+     * @param $shop_id 店铺Id
+     * @param $update_ingredient_sale_status_by_ext_code_requests 更新商品售卖属性请求列表，最大长度30
+     * @return mixed
+     */
+    public function batch_update_item_ingredient_sale_status_by_ext_code($shop_id, $update_ingredient_sale_status_by_ext_code_requests)
+    {
+        return $this->client->call("eleme.product.itemV2.batchUpdateItemIngredientSaleStatusByExtCode", array("shopId" => $shop_id, "updateIngredientSaleStatusByExtCodeRequests" => $update_ingredient_sale_status_by_ext_code_requests));
     }
 
     /** 发布一个品牌标品

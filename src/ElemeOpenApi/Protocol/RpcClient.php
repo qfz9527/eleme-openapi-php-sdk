@@ -23,6 +23,26 @@ class RpcClient
     private $token;
     private $log;
 
+    public function optimize_json_decode($result)
+    {
+        $comment = false;
+        $out = '$data=';
+        for ($i=0; $i<strlen($result); $i++) {
+            if (!$comment) {
+                if (($result[$i] == '{') || ($result[$i] == '[')) $out .= ' array('; else if (($result[$i] == '}') || ($result[$i] == ']')) $out .= ')'; else if ($result[$i] == ':') $out .= '=>';
+                else
+                    $out .= $result[$i];
+            }
+            else
+                $out .= $result[$i];
+            if ($result[$i] == '"' && $result[($i-1)]!="\\")
+                $comment = !$comment;
+        }
+        eval($out . ';');
+
+        return json_encode($data);
+    }
+
     public function __construct($token, Config $config)
     {
         $this->app_key = $config->get_app_key();
@@ -61,6 +81,7 @@ class RpcClient
         }
 
         $result = $this->post($this->api_request_url, $protocol);
+        $result = $this->optimize_json_decode($result);
         $response = json_decode($result, false, 512, JSON_BIGINT_AS_STRING | JSON_UNESCAPED_UNICODE);
         if (is_null($response)) {
             throw new Exception("invalid response.");
