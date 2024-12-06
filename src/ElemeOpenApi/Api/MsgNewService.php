@@ -17,7 +17,7 @@ class MsgNewService extends RpcService
         return $this->client->call("eleme.msgNew.getPushFailMsg", array("msgQueryRequest" => $msg_query_request));
     }
 
-    /** 向平台确认已成功拉取推送失败的消息
+    /** _i_s_v通过该接口向平台确认已成功拉取消息
      * @param $msg_confirm_request 查询条件
      * @return mixed
      */
